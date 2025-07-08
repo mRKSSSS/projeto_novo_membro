@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #fdf2f8 0%, #eff6ff 100%);
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ec4899 0%, #33adea  100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 3rem 2rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+            background: #f9fafb;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .icon-star { color: #eab308; }
+        .icon-calendar { color: #3b82f6; }
+        .icon-users { color: #8b5cf6; }
+        .icon-heart { color: #ef4444; }
+        .icon-map { color: #10b981; }
+        .icon-clock { color: #6b7280; margin-bottom: 0 }
+
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .badge-secondary { background: #f3f4f6; color: #374151; }
+        .badge-outline { background: white; border: 1px solid #d1d5db; color: #374151; }
+        .badge-pink { background: #ec4899; color: white; }
+        .badge-green { background: #10b981; color: white; }
+
+        .team-section {
+            margin-bottom: 1rem;
+        }
+
+        .team-role {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-role.pink { color: #ec4899; }
+        .team-role.blue { color: #3b82f6; }
+        .team-role.yellow { color: #eab308; }
+
+        .team-desc {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .separator {
+            height: 1px;
+            background: #e5e7eb;
+            margin: 1rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card.pink { background: #fdf2f8; }
+        .stat-card.blue { background: #eff6ff; }
+        .stat-card.yellow { background: #fefce8; }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-number.pink { color: #ec4899; }
+        .stat-number.blue { color: #3b82f6; }
+        .stat-number.yellow { color: #eab308; }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .impact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .impact-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+
+        .dot-pink { background: #ec4899; }
+        .dot-blue { background: #3b82f6; }
+        .dot-yellow { background: #eab308; }
+
+        .impact-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .impact-desc {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .announcement {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #fce7f3 0%, #f3e8ff 100%);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .announcement h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+
+        .announcement p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+
+        .love-message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ec4899;
+            font-weight: 600;
+        }
+
+        .footer {
+            background: #f9fafb;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #6b7280;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: #4b5563;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 2rem 1rem;
+            }
+            
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cabeçalho -->
+        <div class="header">
+            <div class="badge">PROJETO CONFIDENCIAL</div>
+            <h1>PROJETO NOVO MEMBRO</h1>
+            <p>Iniciativa Familiar de Alto Impacto</p>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="content">
+            <!-- Resumo Executivo -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="icon icon-star">⭐</span>
+                        Resumo Executivo
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="text-lg">
+                        Temos o prazer de anunciar o lançamento do nosso projeto mais ambicioso e emocionante até hoje. Será uma iniciativa que
+                        transformará completamente a nossa vida.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Detalhes do Projeto -->
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <span class="icon icon-calendar">📅</span>
+                            Cronograma do Projeto
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="status-item">
+                            <span>Início do Projeto:</span>
+                            <span class="status-badge badge-secondary">Já Iniciado</span>
+                        </div>
+                        <div class="status-item">
+                            <span>Duração Estimada:</span>
+                            <span class="status-badge badge-outline">9 meses</span>
+                        </div>
+                        <div class="status-item">
+                            <span>Data de Entrega:</span>
+                            <span class="status-badge badge-pink">2026</span>
+                        </div>
+                        <div class="status-item">
+                            <span>Estado Actual:</span>
+                            <span class="status-badge badge-green">Em Desenvolvimento</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <span class="icon icon-users">👥</span>
+                            Equipa de Projeto
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="team-section">
+                            <div class="team-role pink">Gestora de Projeto Principal</div>
+                            <div class="team-desc">Mamã - Responsável pela gestão geral</div>
+                        </div>
+                        <div class="separator"></div>
+                        <div class="team-section">
+                            <div class="team-role blue">Consultor Estratégico</div>
+                            <div class="team-desc">Papá - Apoio técnico e emocional</div>
+                        </div>
+                        <div class="separator"></div>
+                        <div class="team-section">
+                            <div class="team-role yellow">Novo Membro da Equipa</div>
+                            <div class="team-desc">Bebé - Em fase de desenvolvimento</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Especificações do Projeto -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="icon icon-heart">❤️</span>
+                        Especificações do Projeto
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="grid grid-3">
+                        <div class="stat-card pink">
+                            <div class="stat-number pink">100%</div>
+                            <div class="stat-label">Feito com Amor</div>
+                        </div>
+                        <div class="stat-card blue">
+                            <div class="stat-number blue">∞</div>
+                            <div class="stat-label">Alegria Infinita</div>
+                        </div>
+                        <div class="stat-card yellow">
+                            <div class="stat-number yellow">1</div>
+                            <div class="stat-label">Milagre da Vida</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impacto Esperado -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="icon icon-map">📍</span>
+                        Impacto Esperado
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="impact-item">
+                        <div class="impact-dot dot-pink"></div>
+                        <div>
+                            <div class="impact-title">Expansão da Família</div>
+                            <div class="impact-desc">Aumento no número de membros da família</div>
+                        </div>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-dot dot-blue"></div>
+                        <div>
+                            <div class="impact-title">Transformação Organizacional</div>
+                            <div class="impact-desc">Reestruturação completa da dinâmica familiar</div>
+                        </div>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-dot dot-yellow"></div>
+                        <div>
+                            <div class="impact-title">Investimento em Felicidade</div>
+                            <div class="impact-desc">ROI emocional incalculável</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anúncio Principal -->
+            <div class="announcement">
+                <h3>🎉 BEBÉ A CAMINHO! 🎉</h3>
+                <p>
+                    Esta é a nossa forma especial de partilhar a notícia mais incrível das nossas vidas!
+                </p>
+                <div class="love-message">
+                    <span>❤️</span>
+                    <span>Com todo o nosso amor</span>
+                    <span>❤️</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rodapé do Documento -->
+        <!-- <div class="footer">
+            <span class="icon icon-clock">🕐</span>
+            <span id="date-text">Documento gerado com amor</span>
+        </div> -->
+    </div>
+
+    <script>
+        // Adicionar data actual
+        document.getElementById('date-text').textContent = 
+            'Documento gerado com amor em ' + new Date().toLocaleDateString('pt-PT');
+    </script>
+</body>
+</html>
