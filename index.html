@@ -445,16 +445,16 @@
         </div>
 
         <!-- Rodapé do Documento -->
-        <!-- <div class="footer">
-            <span class="icon icon-clock">🕐</span>
-            <span id="date-text">Documento gerado com amor</span>
-        </div> -->
+        <div class="footer">
+            <!-- <span class="icon icon-clock">🕐</span> -->           
+            <span id="date-text">© 2025 Sónia Alves &nbsp;|&nbsp; <span id="date-time"></span></span>
+        </div>
     </div>
 
     <script>
         // Adicionar data actual
-        document.getElementById('date-text').textContent = 
-            'Documento gerado com amor em ' + new Date().toLocaleDateString('pt-PT');
+        // document.getElementById('date-time').textContent = new Date().toLocaleDateString('pt-PT');
+        document.getElementById('date-time').textContent = new Date(2025, 6, 10).toLocaleDateString('pt-PT');
     </script>
 </body>
 </html>
